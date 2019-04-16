@@ -1,0 +1,18 @@
+﻿<Window x:Class="PhoneBook.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhoneBook"
+        mc:Ignorable="d"
+        Title="Login" Height="253.318" Width="296.453">
+    <Grid>
+        <Label x:Name="lblUsername" Content="Username" HorizontalAlignment="Left" Margin="19.684,60.527,0,0" VerticalAlignment="Top" Width="73.005"/>
+        <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="19.683,91.487,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="148.403,64.528,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="148.403,94.448,0,0" VerticalAlignment="Top" Width="120" Height="23"/>
+        <Button x:Name="btnLogin" Content="Login" Margin="47.648,141.877,0,0" VerticalAlignment="Top"  HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="168.998,141.877,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>
