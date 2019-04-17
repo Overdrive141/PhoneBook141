@@ -6,6 +6,45 @@
         xmlns:local="clr-namespace:PhoneBook"
         mc:Ignorable="d"
         Title="Contacts" Height="384.096" Width="800">
+    <Window.Resources>
+        <local:Contact x:Key="contact141"/>
+
+        <DataTemplate x:Key="tmpDetails">
+            <Grid Background="#33000000">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="141*" ></RowDefinition>
+                    <RowDefinition Height="51*" ></RowDefinition>
+                    <RowDefinition Height="49*" ></RowDefinition>
+                    <RowDefinition Height="52*" ></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Ellipse Height="100" Width="100" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Margin="74.75,20.543,74.75,20.546">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding photo}"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+                <Label Content="First Name:" Grid.Column="0" Grid.Row="1" Margin="10,0,0,0"/>
+                <Label x:Name="lblFName" Content="{Binding Path= FName}"  Grid.Column="1" Grid.Row="1"    />
+                <Label Content="Last Name:" Grid.Column="2" Grid.Row="1"    />
+                <Label x:Name="lblLName" Content="{Binding Path= LName}" Grid.Column="3" Grid.Row="1"   />
+                <Label Content="Phone Number:" Grid.Column="0" Grid.Row="2" Margin="10,0,0,0"/>
+                <Label x:Name="lblphoneNumber" Content="{Binding Path=Number}" Grid.Column="1" Grid.Row="2" />
+                <Label Content="Company:" Grid.Column="2" Grid.Row="2"/>
+                <Label x:Name="lblCompany" Content="{Binding Path=Company}" Grid.Column="3" Grid.Row="2"/>
+                <Label Content="Email:" Grid.Column="0" Grid.Row="3" Margin="10,0,0,0"/>
+                <Label x:Name="lblEmail" Content="{Binding Path=Email}" Grid.Column="1" Grid.Row="3" />
+                <Label Content="Address:" Grid.Column="2" Grid.Row="3"/>
+                <Label x:Name="lblAddress" Content="{Binding Path= Address}" Grid.Column="3" Grid.Row="3"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
     <TabControl HorizontalAlignment="Left" Height="341.144" Margin="6,11.101,0,0" VerticalAlignment="Top" Width="780">
         <TabItem Header="Add Contact">
             <Grid Background="#FFE5E5E5" Margin="0,1.333,0,0">
@@ -22,41 +61,49 @@
                 <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="3.438,162.402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213.707" Grid.Column="1"/>
                 <TextBox x:Name="txtCompany" HorizontalAlignment="Left" Height="23" Margin="3.438,206.682,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213.707" Grid.Column="1"/>
                 <TextBox x:Name="txtJobtitle" HorizontalAlignment="Left" Height="23" Margin="3.438,247.872,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213.707" Grid.Column="1"/>
-                <Label Content="First Name" HorizontalAlignment="Left" Height="23" Margin="10,33.121,0,0" VerticalAlignment="Top" Width="114.105"/>
-                <Label Content="Last Name" HorizontalAlignment="Left" Height="23" Margin="10,73.844,0,0" VerticalAlignment="Top" Width="114.105"/>
-                <Label Content="Phone Number" HorizontalAlignment="Left" Height="23" Margin="10,117.56,0,0" VerticalAlignment="Top" Width="114.105"/>
-                <Label Content="Email" HorizontalAlignment="Left" Height="23" Margin="10,162.402,0,0" VerticalAlignment="Top" Width="114.105"/>
-                <Label Content="Company" HorizontalAlignment="Left" Height="25.667" Margin="10,206.682,0,0" VerticalAlignment="Top" Width="114.105"/>
-                <Label Content="Job Title" HorizontalAlignment="Left" Height="23" Margin="10,247.872,0,0" VerticalAlignment="Top" Width="114.105"/>
-                <Label Content="Address" HorizontalAlignment="Left" Height="23" Margin="3.333,33.121,0,0" VerticalAlignment="Top" Width="114.105" Grid.Column="2"/>
-                <Label Content="Photo" HorizontalAlignment="Left" Height="23" Margin="3.333,113.56,0,0" VerticalAlignment="Top" Width="114.105" Grid.Column="2"/>
+                <Label Content="First Name" HorizontalAlignment="Left" Height="23" Margin="10,33.121,0,0" VerticalAlignment="Top" Width="114.105" FontWeight="Bold"/>
+                <Label Content="Last Name" HorizontalAlignment="Left" Height="23" Margin="10,73.844,0,0" VerticalAlignment="Top" Width="114.105" FontWeight="Bold"/>
+                <Label Content="Phone Number" HorizontalAlignment="Left" Height="23" Margin="10,117.56,0,0" VerticalAlignment="Top" Width="114.105" FontWeight="Bold"/>
+                <Label Content="Email" HorizontalAlignment="Left" Height="23" Margin="10,162.402,0,0" VerticalAlignment="Top" Width="114.105" FontWeight="Bold"/>
+                <Label Content="Company" HorizontalAlignment="Left" Height="25.667" Margin="10,206.682,0,0" VerticalAlignment="Top" Width="114.105" FontWeight="Bold"/>
+                <Label Content="Job Title" HorizontalAlignment="Left" Height="23" Margin="10,247.872,0,0" VerticalAlignment="Top" Width="114.105" FontWeight="Bold"/>
+                <Label Content="Address" HorizontalAlignment="Left" Height="23" Margin="3.333,33.121,0,0" VerticalAlignment="Top" Width="114.105" Grid.Column="2" FontWeight="Bold"/>
+                <Label Content="Photo" HorizontalAlignment="Left" Height="23" Margin="3.333,113.56,0,0" VerticalAlignment="Top" Width="114.105" Grid.Column="2" FontWeight="Bold"/>
                 <Button x:Name="btnUpload" Content="Upload" Grid.Column="2" HorizontalAlignment="Left" Height="21.333" Margin="137.861,117.56,0,0" VerticalAlignment="Top" Width="213.707" Click="PhotoUpload_Click"/>
                 <Button x:Name ="btnSave" Content="Save" Grid.Column="2" HorizontalAlignment="Left" Margin="172.667,209.682,0,0" VerticalAlignment="Top" Width="75" Click="Save_Click"/>
             </Grid>
         </TabItem>
         <TabItem Header="View Contacts">
-            <Grid Background="#FFE5E5E5">
-                <ListBox x:Name="listContacts" ItemTemplate="{DynamicResource tmpContact}" HorizontalAlignment="Left" Height="293.184" VerticalAlignment="Top" Width="239" Margin="10,10,0,0">
+            <Grid Background="#FFE5E5E5" >
+
+                <ListBox x:Name="listContacts" ItemTemplate="{DynamicResource tmpContact}" HorizontalAlignment="Left" Height="293.184" VerticalAlignment="Top" Width="239" Margin="10,10,0,0" IsSynchronizedWithCurrentItem="True" MouseDoubleClick="ListContacts_MouseDoubleClick">
                     <ListBox.Resources>
 
                         <DataTemplate x:Key="tmpContact">
                             <StackPanel Orientation="Horizontal">
                                 <Ellipse Height="48" Width="48" VerticalAlignment="Center">
                                     <Ellipse.Fill>
-                                        <ImageBrush x:Name="Contactr" ImageSource="{DynamicResource ContactPhoto}"/>
-
+                                        <ImageBrush ImageSource="{Binding photo}"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="12,0,0,0">
-                                    <TextBlock Name="txtListName" Text="{Binding Name}"/>
-                                    <TextBlock Name="txtListNumber" Text="{Binding PhNumber}" FontSize="10" />
+                                    <TextBlock Name="txtListName" Text="{Binding Name}" FontFamily="Segoe UI" FontWeight="SemiBold" FontSize="14" TextTrimming="None" TextWrapping="Wrap" LineStackingStrategy="MaxHeight" />
+                                    <TextBlock Name="txtListNumber" Text="{Binding Number}" FontWeight="Normal" FontSize="13" Opacity="1" IsEnabled="False" Foreground="#99000000" />
+
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.Resources>
                 </ListBox>
+                <Grid HorizontalAlignment="Left" Height="293.184" Margin="265,10,0,0" VerticalAlignment="Top" Width="499" Grid.ColumnSpan="2" >
 
-                <Button Content="Refresh" HorizontalAlignment="Left" Height="36.666" Margin="341.667,65.606,0,0" VerticalAlignment="Top" Width="83.333" Click="Refresh_Click"/>
+                    <ContentControl x:Name="content1" ContentTemplate="{StaticResource tmpDetails}"/>
+
+
+
+
+                </Grid>
+                <Button Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Height="22" Margin="700,-31.061,0,0" VerticalAlignment="Top" Width="64" Visibility="Hidden" Click="Edit_Click"/>
             </Grid>
         </TabItem>
     </TabControl>

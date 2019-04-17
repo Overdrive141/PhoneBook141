@@ -86,7 +86,7 @@ namespace PhoneBook
         {
             get
             {
-                return FName + LName;
+                return FName + " " + LName;
             }
         }
 
@@ -94,7 +94,7 @@ namespace PhoneBook
         {
             get
             {
-                return PhArea + PhNumber;
+                return PhArea + "-" + PhNumber;
             }
         }
 

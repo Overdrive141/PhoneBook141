@@ -23,33 +23,15 @@ namespace PhoneBook
     {
         Class1 c1 = new Class1();
         Image image = new Image();
-        Ellipse ellipse = new Ellipse();
-        string defaultPath = "C:/Users/farha/Desktop/Wallpapers/141.png";
 
-        BitmapImage cImage = new BitmapImage();
+        ImageBrush imageBrush = new ImageBrush();
+
 
 
         public Contacts()
         {
             InitializeComponent();
 
-           // var cImage = new BitmapImage(new Uri("C:/Users/farha/Desktop/Wallpapers/141.png"));
-             
-              cImage.BeginInit();
-
-            cImage.CacheOption = BitmapCacheOption.None;
-            cImage.UriCachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.BypassCache);
-            cImage.CacheOption = BitmapCacheOption.OnLoad;
-            cImage.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-
-
-             cImage.UriSource = new Uri(getPhoto(), UriKind.Relative);
-             cImage.EndInit();
-
-            Resources["ContactPhoto"] = cImage;
-
-            //this.listContacts.ItemsSource = c1.GetAllContacts();
-            //Load contacts in List
             c1.AddContact(new Contact()
             {
                 FName = "Alpha",
@@ -60,44 +42,37 @@ namespace PhoneBook
                 JobTitle = "Professor",
                 Email = "alpha@gmail.com",
                 Address = "Tarlai Kalan",
-                photo = getPhoto()
+                photo = "141.png"
                 
                     
 
                 });
 
                 this.listContacts.ItemsSource = null;
-            this.listContacts.Items.Refresh();
+                this.listContacts.Items.Refresh();
                 this.listContacts.ItemsSource = c1.GetAllContacts();
+                this.content1.Content = c1.GetAllContacts();
 
             
 
         }
 
-        private string getPhoto()
-        {
-            if (btnUpload.Content.ToString() == "Upload")
-                return defaultPath;
-            else
-                return btnUpload.Content.ToString();
 
-        }
 
         private void PhotoUpload_Click(object sender, RoutedEventArgs e)
         {
-            btnUpload.Content = "";
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
-                btnUpload.Content = openFileDialog.FileName;
+                imageBrush.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Relative));
+            
 
 
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            /*c1.AddContact(
-                txtFName.Text, txtLName.Text, txtPhArea.Text, txtPhNumber.Text, txtCompany.Text, txtJobtitle.Text, txtEmail.Text, txtAddress.Text
-                );*/
+
             c1.AddContact(new Contact()
             {
                 FName = txtFName.Text,
@@ -107,22 +82,22 @@ namespace PhoneBook
                 Company = txtCompany.Text,
                 JobTitle = txtJobtitle.Text,
                 Email = txtEmail.Text,
-                Address = txtAddress.Text
+                Address = txtAddress.Text,
+                photo = imageBrush.ImageSource.ToString()
             });
-           // btnUpload.Content = "";
+
             
-            //Console.WriteLine(c1.GetContact(0));
         
         }
-        
-        private void Refresh_Click(object sender, RoutedEventArgs e)
+
+        private void ListContacts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            this.listContacts.ItemsSource = null;
-            this.listContacts.ItemsSource = c1.GetAllContacts();
-            Resources["ContactPhoto"] = cImage;
-
+            btnEdit.Visibility = Visibility.Visible;
         }
 
-        
+        private void Edit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
