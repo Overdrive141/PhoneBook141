@@ -26,24 +26,24 @@ namespace PhoneBook.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string username {
+        public string finalUsername {
             get {
-                return ((string)(this["username"]));
+                return ((string)(this["finalUsername"]));
             }
             set {
-                this["username"] = value;
+                this["finalUsername"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string password {
+        public string finalPassword {
             get {
-                return ((string)(this["password"]));
+                return ((string)(this["finalPassword"]));
             }
             set {
-                this["password"] = value;
+                this["finalPassword"] = value;
             }
         }
     }

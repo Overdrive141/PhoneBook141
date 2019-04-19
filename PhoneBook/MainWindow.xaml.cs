@@ -20,13 +20,30 @@ namespace PhoneBook
     /// </summary>
     public partial class MainWindow : Window
     {
+        Login loginWindow = new Login();
+        Contacts contactWindow = new Contacts();
         public MainWindow()
         {
+            
             InitializeComponent();
-            txtPassword.Password = Properties.Settings.Default.password;
-            txtUsername.Text = Properties.Settings.Default.username;
+            //Properties.Settings.Default.username = null;
+            //Properties.Settings.Default.password = null;
+            if (Properties.Settings.Default.finalUsername.Length > 1)
+            {
+                this.Close();
+                loginWindow.Show();
+
+            }
+            else
+            {
+                this.Show();  
+            }
+
+            Console.WriteLine(Properties.Settings.Default.finalUsername);
+            Console.WriteLine(Properties.Settings.Default.finalPassword);
+
         }
-        
+
         private void Submit_Click(object sender, EventArgs e)
         {
             
@@ -59,12 +76,15 @@ namespace PhoneBook
                 else
                 {
                     MessageBox.Show("You have Signed Up Successfully. You may Login now.");
-                    Console.WriteLine(UserName + Password + Password2);
+                    this.Close();
+                    loginWindow.Show();
+                    
+                    
                 }
          
             }
-            Properties.Settings.Default.username = txtUsername.Text;
-            Properties.Settings.Default.password = txtPassword.Password;
+            Properties.Settings.Default.finalUsername = txtUsername.Text;
+            Properties.Settings.Default.finalPassword = txtPassword.Password;
             Properties.Settings.Default.Save();
         }
 
